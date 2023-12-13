@@ -21,7 +21,15 @@ class _HomeState extends State<Home> {
           return Padding(
             padding: const EdgeInsets.only(top: 100.0),
             child: CarouselSlider(
-              options: CarouselOptions(height: 200.0),
+              options: CarouselOptions(
+                height: 200.0,
+                viewportFraction: 1.0,
+                enlargeCenterPage: false,
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 2),
+                autoPlayCurve: Curves.easeInOut,
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+              ),
               items: productList.map((product) {
                 return Container(
                   width: MediaQuery.of(context).size.width,
@@ -34,7 +42,7 @@ class _HomeState extends State<Home> {
                       Flexible(
                         child: Image.network(
                           product['picture'],
-                          fit: BoxFit.contain,
+                          fit: BoxFit.cover,
                         ),
                       ),
                       SizedBox(height: 10.0),
